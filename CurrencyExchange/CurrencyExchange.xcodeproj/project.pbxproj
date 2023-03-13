@@ -62,11 +62,10 @@
 				E748DC3929BECF3F0048C094 /* Assets.xcassets */,
 				E748DC3729BECF3E0048C094 /* ContentView.swift */,
 				E748DC3529BECF3E0048C094 /* CurrencyExchangeApp.swift */,
+				E748DC4E29BF0AFA0048C094 /* Main */,
 				E748DC4529BED2510048C094 /* Models */,
 				E748DC4C29BF0A490048C094 /* Network */,
 				E748DC3B29BECF3F0048C094 /* Preview Content */,
-				E748DC4829BEF2890048C094 /* RatesListView.swift */,
-				E748DC4A29BEF6060048C094 /* RatesListViewModel.swift */,
 			);
 			path = CurrencyExchange;
 			sourceTree = "<group>";
@@ -93,6 +92,15 @@
 				E748DC4329BECFD90048C094 /* FixerAPI.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E748DC4E29BF0AFA0048C094 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E748DC4829BEF2890048C094 /* RatesListView.swift */,
+				E748DC4A29BEF6060048C094 /* RatesListViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

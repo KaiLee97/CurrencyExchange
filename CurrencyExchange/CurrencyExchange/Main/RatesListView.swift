@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RatesListView: View {
     @StateObject private var viewModel = RatesListViewModel()
-       
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -50,7 +50,7 @@ struct RatesListView: View {
                             .font(.title)
                         Spacer()
                     }
-                
+                    
                 }
                 .onAppear {
                     viewModel.fetchData()

@@ -19,7 +19,7 @@ class RatesListViewModel: ObservableObject {
         case loaded
         case failed
     }
-        
+    
     func calcRate(rate: Double) -> Double {
         return amount * rate
     }
