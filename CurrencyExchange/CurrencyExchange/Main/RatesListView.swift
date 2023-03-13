@@ -22,7 +22,7 @@ struct RatesListView: View {
                         .frame(height: 12)
                     
                     VStack(alignment: .center, spacing: 4) {
-                        Stepper("Amount: $\(Int(viewModel.amount))", value: $viewModel.amount, step: 5)
+                        Stepper("Amount: $\(Int(viewModel.amount)) \(viewModel.currentCurrency)", value: $viewModel.amount, step: 5)
                         Slider(value: $viewModel.amount, in: 1...9999)
                     }
                     .padding()
@@ -66,7 +66,7 @@ struct RatesListView: View {
                         Button {
                             viewModel.fetchData()
                         } label: {
-                            Image(systemName: "arrow.clockwise")
+                            Image(systemName: "arrow.triangle.2.circlepath")
                         }
                     }
                 }
