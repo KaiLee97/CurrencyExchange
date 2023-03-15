@@ -13,3 +13,7 @@ struct CurrencyExchangeRates: Decodable {
     let rates: [String: Double]
 }
 
+struct CurrencySymbols: Decodable {
+    let symbols: [String: String]
+}
+

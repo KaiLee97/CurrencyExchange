@@ -23,6 +23,8 @@ struct RatesListView: View {
                     
                     VStack(alignment: .center, spacing: 4) {
                         Stepper("Amount: $\(Int(viewModel.amount)) \(viewModel.currentCurrency)", value: $viewModel.amount, step: 5)
+                            .font(.callout)
+                            .bold()
                         Slider(value: $viewModel.amount, in: 1...9999)
                     }
                     .padding()
@@ -33,9 +35,12 @@ struct RatesListView: View {
                             ForEach(Array(viewModel.rates.keys.sorted()), id: \.self) { key in
                                 HStack(alignment: .center, spacing: 4) {
                                     Text(key)
-                                        .fontWeight(.bold)
+                                        .bold()
+                                        .font(.callout)
                                     Spacer()
                                     Text("\(viewModel.calcRate(rate: viewModel.rates[key]!), specifier: "%.2f")")
+                                        .italic()
+                                        .font(.callout)
                                 }
                             }
                         }
@@ -50,26 +55,33 @@ struct RatesListView: View {
                             .font(.title)
                         Spacer()
                     }
-                    
                 }
-                .onAppear {
-                    viewModel.fetchData()
-                }
-                .navigationTitle("Currency Exchange")
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Text("USD")
-                        // TODO: add ability to change currency
+                        Picker("Currency", selection: $viewModel.currentCurrency) {
+                            ForEach(viewModel.currencyList, id: \.self) { currency in
+                                Button {
+                                    viewModel.currentCurrency = currency
+                                } label: {
+                                    Text(currency)
+                                }
+                            }
+                        }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            viewModel.fetchData()
+                            viewModel.fetchRates()
                         } label: {
                             Image(systemName: "arrow.triangle.2.circlepath")
                         }
                     }
                 }
+            }
+            .navigationTitle("Currency Exchange")
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                viewModel.fetchCurrencies()
+                viewModel.fetchRates()
             }
         }
     }

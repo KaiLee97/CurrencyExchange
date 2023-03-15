@@ -22,4 +22,15 @@ class FixerAPI {
         let ratesData = try JSONDecoder().decode(CurrencyExchangeRates.self, from: data)
         return ratesData.rates
     }
+    
+    func getAllCurrencies() async throws -> [String: String] {
+        let urlString = "https://api.apilayer.com/fixer/symbols"
+        guard let url = URL(string: urlString) else { fatalError("Incorrect URL") }
+        var request = URLRequest(url: url,timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        request.addValue(API_KEY, forHTTPHeaderField: "apikey")
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let symbolsList = try JSONDecoder().decode(CurrencySymbols.self, from: data)
+        return symbolsList.symbols
+    }
 }
